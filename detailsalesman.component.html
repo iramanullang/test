@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="profile">
+    <div class="card" *ngIf="salesman">
+      <div class="col-12"><b>{{salesman?.EmployeeCode}} - {{salesman?.Name}}</b></div>
+      <div class="row">
+        <div class="col-7">{{salesman?.Handphone}}</div>
+        <div class="col-5 text-right">
+          <div class="text-right">{{salesman?.Position}}</div>
+          <div class="text-right">{{salesman?.Division}}</div>
+        </div>
+      </div>
+      <div class="col-12">{{salesman?.WarehouseName}}</div>
+    </div>
+  </div>
+  <div *ngIf="salesman">
+    <div class="graph">
+      <div>
+        <p><strong>Top 5 Customer</strong></p>
+        <div style="display: block" *ngIf="barChartDataTotalOrderAmount">
+          <canvas baseChart [datasets]="barChartDataTotalOrderAmount" [labels]="barChartLabelsTotalOrderAmount"
+            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+            [chartType]="barChartType">
+          </canvas>
+        </div>
+        <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+      </div>
+    </div>
+
+    <div class="graph">
+      <div>
+        <p><strong>Top 5 Customer</strong></p>
+        <div style="display: block" *ngIf="barChartDataTotalOrderCount">
+          <canvas baseChart [datasets]="barChartDataTotalOrderCount" [labels]="barChartLabelsTotalOrderCount"
+            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+            [chartType]="barChartType">
+          </canvas>
+        </div>
+        <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+      </div>
+    </div>
+
+    <div class="graph">
+      <div>
+        <p><strong>Top 5 Product</strong></p>
+        <div style="display: block" *ngIf="barChartDataTotalQuantity">
+          <canvas baseChart [datasets]="barChartDataTotalQuantity" [labels]="barChartLabelsTotalQuantity"
+            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+            [chartType]="barChartType">
+          </canvas>
+        </div>
+        <!-- <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button> -->
+      </div>
+    </div>
+  </div>
+</div>
