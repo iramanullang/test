@@ -1,0 +1,99 @@
+<div class="main">
+
+    <div class="row px-4">
+      <div class="col-9 listsalesman-filter">
+        <input type="search" class="form-control" name="search" [(ngModel)]="search" placeholder="search" (input)="searchText()">
+      </div>
+      <div class="col-3 listsalesman-filter">
+        <button class="btn btn-sm btn-block listsalesman-filter-button" 
+                (click)="sortData(order)" 
+                [value]="order ? 'Asc' : ' Desc'">
+          <fa-icon icon="sort"></fa-icon> Sort
+        </button>
+      </div>
+    </div>
+  <div class= "row">
+    <div class="col-6" id="kanan">
+      <mat-form-field color="accent" id="lebar">
+          <mat-label>From</mat-label>
+          <input matInput [matDatepicker]="picker1">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+    <div class="col-6">
+        <mat-form-field color="accent" id="lebar">
+          <mat-label>To</mat-label>
+          <input matInput [matDatepicker]="picker2">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="showlist">
+          <ng-container matColumnDef="code" sticky>
+            <th mat-header-cell *matHeaderCellDef> Code </th>
+            <td id="colCode" mat-cell *matCellDef="let showlist"> {{showlist.Code}} </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td id ="colLeft" mat-cell *matCellDef="let showlist"> {{showlist.Name}} </td>
+          </ng-container>
+          <ng-container matColumnDef="order">
+            <th mat-header-cell *matHeaderCellDef> orders </th>
+            <td id ="colCent" mat-cell *matCellDef="let showlist"> {{showlist.Orders}} </td>
+          </ng-container>
+          <ng-container matColumnDef="promo">
+            <th mat-header-cell *matHeaderCellDef> Promo Used </th>
+            <td id ="colCent" mat-cell *matCellDef="let showlist"> {{showlist.PromoUsed}} </td>
+          </ng-container>
+          <ng-container matColumnDef="customer">
+            <th mat-header-cell *matHeaderCellDef> Customers </th>
+            <td id ="colCent" mat-cell *matCellDef="let showlist"> {{showlist.Customers}} </td>
+          </ng-container>
+          <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef> Products </th>
+            <td id ="colCent" mat-cell *matCellDef="let showlist"> {{showlist.Products}} </td>
+          </ng-container>
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef> Order Total </th>
+            <td id ="colRight" mat-cell *matCellDef="let showlist"> {{showlist.OrderTotal}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+            
+    <!-- <div class="container" *ngFor="let salesman of showlist">
+      <div class="row px-4">
+        <div class="card" style="width:120%">
+          <div class="card-body" (click)="opendetail(salesman.Id)" >
+            <div class="row justify-content-between">
+              <div class = "col-" id="left"><b>{{salesman.Name}}</b></div>
+              <div class = "col-" id="right"><b>{{salesman.Code}}</b></div>
+            </div>
+            <div class="row align-items-center" id="Amount">
+                <div class = "col-3">{{salesman.Orders}}</div>
+                <div class = "col-3">{{salesman.PromoUsed}}</div>
+                <div class = "col-3">{{salesman.Customers}}</div>
+                <div class = "col-3">{{salesman.Products}}</div>
+            </div>
+            <div class="row align-items-center" id="Icon">
+                <div class = "col-3"><img src="https://img.icons8.com/ios-filled/22/000000/purchase-order.png"></div>
+                <div class = "col-3"><img src="https://img.icons8.com/ios-glyphs/22/000000/discount-ticket.png"></div>
+                <div class = "col-3"><img src="https://img.icons8.com/ios-glyphs/22/000000/gender-neutral-user.png"></div>
+                <div class = "col-3"><img src="https://img.icons8.com/material/22/000000/new-product.png"></div>
+            </div>
+            <div class="row align-items-end">
+              <div class = "col-12" id="bawah"><b>{{salesman.OrderTotal | currency : "RP "}}</b></div>
+            </div>       
+          </div>
+        </div>
+      </div>
+    </div>  -->
+</div>       
+  
+  
