@@ -1,0 +1,35 @@
+.container{
+    background: rgb(170, 166, 166);
+    padding: 10px;
+}
+.container1{
+    background:whitesmoke;
+    padding: 5px;
+}
+
+.header{
+    overflow: hidden;
+    padding: 10px;
+}
+.main{
+    margin-top:60px; 
+}
+
+// label{
+//     text-align: justify;
+//     padding: 0px;
+//     margin: 0%;
+// }
+
+/*[type=text] {
+    outline-offset: unset;
+    -webkit-appearance: none;
+    margin: 8px;
+    width: 95%;
+    height: 35px;
+}*/
+
+agm-map {
+    height: 650px;
+    width: auto;
+}

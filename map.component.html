@@ -1,0 +1,61 @@
+
+<div class="main">
+<div class="container1">
+  <ng-select [items]="filEmp" bindLabel="Name" bindValue="DeviceImei" placeholder="Select Sales Name"
+    [(ngModel)]="selectedImei" (change)="panTo()">
+  </ng-select>
+</div>
+
+<!-- <div class="container1">
+  <ng-select [items]="customers" bindLabel="Name" placeholder="Select Customer Name">
+  </ng-select>
+</div> -->
+
+<!--<ng-container *ngFor="let item of items | async">
+  <pre>{{item | json}}</pre>
+</ng-container>-->
+
+<div>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [usePanning]="true" (mapReady)="mapReady($event)">
+    <agm-marker *ngFor="let item of items | async; let i = index"
+                [latitude]="item['employee'].locations[item['employee'].locations.length - 1].location._lat"
+                [longitude]="item['employee'].locations[item['employee'].locations.length - 1].location._long"
+                [iconUrl]="'/assets/Marker.svg'"
+                [label]= "{color: 'blue', fontSize: '14px', fontWeight:'bold', text:showlist[item['employee'].imei].Name}"
+                (markerClick)="showSalesInfoWindow(infoWindow, i)">
+      <agm-info-window #infoWindow>
+        <!-- <label *ngIf="loaded"> -->
+          <td>
+            <h6>{{showlist[item['employee'].imei].Name}}</h6>
+          </td>
+          <td><strong>{{showlist[item['employee'].imei].EmployeeCode}}</strong></td>
+          <tr><img src="https://img.icons8.com/ios-glyphs/18/000000/new-job.png"> :
+            <b>{{showlist[item['employee'].imei].PositionName}}</b></tr>
+          <tr><img src="https://img.icons8.com/material/18/000000/address-book-2.png"> :
+            <b>{{showlist[item['employee'].imei].Address}}</b></tr>
+          <tr><img src="https://img.icons8.com/android/18/000000/phone.png"> :
+            <b>{{showlist[item['employee'].imei].Handphone}}</b></tr>
+          <tr><img src="https://img.icons8.com/ios-filled/18/000000/tear-off-calendar.png"> :
+            <b>{{item['employee'].locations[item['employee'].locations.length - 1].date.toDate() | date : 'dd-MM-yyyy'}}</b></tr>
+          <tr><img src="https://img.icons8.com/ios-filled/18/000000/time.png"> :
+            <b>{{item['employee'].locations[item['employee'].locations.length - 1].date.toDate() | date : 'hh:mm:ss a '}}</b></tr>
+        <!-- </label> -->
+      </agm-info-window>
+    </agm-marker>
+
+    <agm-marker *ngFor="let cust of customers" 
+                [latitude]="cust.Latitude" 
+                [longitude]="cust.Longitude"
+                [iconUrl]="'/assets/Marker1.svg'"
+                (markerClick)="showCustInfoWindow(infoWindow, i)">
+    <agm-info-window #infoWindow>
+      <td><h6>{{cust.Name}}</h6></td>
+      <tr><img src="https://img.icons8.com/material/18/000000/address-book-2.png"> :
+        <b>{{ cust.FullAddress }}</b></tr>
+      <tr><img src="https://img.icons8.com/android/18/000000/phone.png"> :
+        <b>{{ cust.Handphone }}</b></tr>
+    </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div><br>
+</div>
